@@ -24,24 +24,19 @@ public class MessagingService {
     void getMessages(MessageDto message) {
 
         log.info("getMessages : " + message.toString());
-//        sendEmail(message);
+        sendEmail(message);
     }
 
-    public MessagingService() {
-
-        sendEmail("Success");
-    }
-
-    public void sendEmail(String message) {
+    public void sendEmail(MessageDto message) {
 
         try {
 
             SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
 
-//            simpleMailMessage.setFrom(fromEmailId);
-            simpleMailMessage.setTo("gokulnathkamaraj@gmail.com");
-            simpleMailMessage.setSubject("Hello test test message");
-            simpleMailMessage.setText(message);
+            simpleMailMessage.setFrom(fromEmailId);
+            simpleMailMessage.setTo(message.getRecipient();
+            simpleMailMessage.setSubject(message.getSubject());
+            simpleMailMessage.setText(message.getBody());
 
             javaMailSender.send(simpleMailMessage);
         }
